@@ -1,13 +1,8 @@
 import pytest
-import os
 from playwright.sync_api import Page
 from pages.login_page import LoginPage
-from dotenv import load_dotenv
+from config import USERNAME, PASSWORD
 
-load_dotenv()
-
-USERNAME = os.environ["SAUCE_USERNAME"]
-PASSWORD = os.environ["SAUCE_PASSWORD"]
 
 web_app = "https://www.saucedemo.com/"
 

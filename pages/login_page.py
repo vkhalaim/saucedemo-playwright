@@ -9,3 +9,6 @@ class LoginPage:
         self.page.locator("[data-test='username']").fill(username)
         self.page.locator("[data-test='password']").fill(password)
         self.page.locator("[data-test='login-button']").click()
+
+    def get_error_message(self) -> str:
+        return self.page.locator("[data-test='error']").text_content()
