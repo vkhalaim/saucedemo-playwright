@@ -1,9 +1,19 @@
 import pytest
-from pages.login_page import Page, LoginPage
+import os
+from playwright.sync_api import Page
+from pages.login_page import LoginPage
+from dotenv import load_dotenv
+
+load_dotenv()
+
+USERNAME = os.environ["SAUCE_USERNAME"]
+PASSWORD = os.environ["SAUCE_PASSWORD"]
+
+web_app = "https://www.saucedemo.com/"
 
 
 @pytest.fixture
 def logged_in_page(page: Page):
-    page.goto("https://www.saucedemo.com/")
-    LoginPage(page).login("standard_user", "secret_sauce")
+    page.goto(web_app)
+    LoginPage(page).login(USERNAME, PASSWORD)
     return page
