@@ -34,5 +34,12 @@ jobs:
           SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
           SAUCE_USERNAME_LOCKED_OUT: ${{ secrets.SAUCE_USERNAME_LOCKED_OUT }}
         run: pytest
+      
+      - name: Upload visual diff artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: snapshot_tests_failures/
 
 
